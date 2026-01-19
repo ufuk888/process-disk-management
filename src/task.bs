@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Temiz bir görünüm için ekranı temizle
+clear
+
+echo "=== SİSTEM ÖZETİ ==="
+# CPU ve RAM'e göre ilk 5 süreci listeler
+echo -e "\n[1] En Çok Kaynak Tüketen 5 Süreç:"
+ps -eo pid,ppid,%cpu,%mem,comm --sort=-%cpu | head -n 6
+
+# Disk doluluk oranını gösterir
+echo -e "\n[2] Disk Durumu:"
+df -h --output=source,pcent,target -x tmpfs -x devtmpfs
+
+# Büyük dosyaları (50MB+) listeler
+echo -e "\n[3] Büyük Dosyalar (Limit: 50MB):"
+find $HOME -type f -size +50M 2>/dev/null | head -n 5
+
+echo -e "\n------------------------------------"
+echo "İşlem Seçin: [k] Süreç Öldür | [t] Tara/Yenile | [q] Çıkış"
+read -p "> " action
+
+if [ "$action" == "k" ]; then
+    read -p "Öldürülecek PID numarasını girin: " pid
+    kill -9 $pid && echo "Süreç $pid durduruldu."
+elif [ "$action" == "q" ]; then
+    exit 0
+fi
