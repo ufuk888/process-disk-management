@@ -35,3 +35,12 @@ Sistemde o an çalışan işlemlerin anlık bir fotoğrafını (snapshot) çeker
 ## 📂 Disk Yönetimi
 * **`df -h`**: Disk doluluk oranlarını görselleştirir.
 * **`du -sh *`**: Büyük dosyaları ve klasör boyutlarını tespit etmek için kullanılır.
+
+## Projenin amacı
+
+###CPU ve RAM kullanımına göre süreçleri sıralama ve sonlandırma (kill).
+###Disk doluluk oranlarını görselleştirme.
+###Büyük dosyaları bulma.
+
+
+
